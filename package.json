@@ -1,0 +1,35 @@
+{
+  "name": "@chr33s/micro",
+  "version": "0.1.0",
+  "scripts": {
+    "lint": "standardx **/*.js",
+    "format": "prettier --write '**/*.js'",
+    "pretest": "npm run format && npm run lint",
+    "test": "NODE_ENV=test mocha test"
+  },
+  "author": "chris",
+  "homepage": "https://github.com/chr33s/micro",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chr33s/micro.git"
+  },
+  "keywords": [
+    "micro",
+    "services",
+    "http"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=8.10.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "8.2.6",
+    "mocha": "5.2.0",
+    "prettier": "1.14.2",
+    "standardx": "2.1.0",
+    "supertest": "3.1.0"
+  },
+  "standardx": {
+    "parser": "babel-eslint"
+  }
+}
