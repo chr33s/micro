@@ -24,7 +24,7 @@
   },
   "devDependencies": {
     "babel-eslint": "10.1.0",
-    "mocha": "7.1.0",
+    "mocha": "10.2.0",
     "prettier": "1.19.1",
     "standardx": "5.0.0",
     "supertest": "4.0.2"
