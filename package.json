@@ -1,6 +1,7 @@
 {
   "name": "@chr33s/micro",
-  "version": "0.2.0",
+  "version": "0.3.0",
+  "type": "module",
   "scripts": {
     "lint": "standardx --fix **/*.js",
     "format": "prettier --write '**/*.js'",
@@ -20,7 +21,7 @@
   ],
   "license": "MIT",
   "engines": {
-    "node": ">=8.10.0"
+    "node": ">=18.0.0"
   },
   "devDependencies": {
     "mocha": "10.2.0",

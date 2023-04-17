@@ -1,14 +1,6 @@
-"use strict";
-
-const micro = require("./lib/micro");
-
-module.exports = micro;
-
-exports = micro;
-exports.micro = micro;
-exports.default = micro;
-exports.error = require("./lib/error");
-exports.form = require("./lib/parse/form");
-exports.json = require("./lib/parse/json");
-exports.text = require("./lib/parse/text");
-exports.buffer = require("./lib/parse/buffer");
+export { default as micro } from "./lib/micro.js";
+export { default as error } from "./lib/error.js";
+export { default as form } from "./lib/parse/form.js";
+export { default as json } from "./lib/parse/json.js";
+export { default as text } from "./lib/parse/text.js";
+export { default as buffer } from "./lib/parse/buffer.js";
