@@ -11,7 +11,7 @@ npm install --save @chr33s/micro
 ```
 
 ```js
-const { micro, json } = require('@chr33s/micro');
+import { micro, json } from "@chr33s/micro";
 ```
 
 **Library**
@@ -21,7 +21,7 @@ git subtree add --prefix micro https://github.com/chr33s/micro.git master --squa
 ```
 
 ```js
-const { micro, json } = require('./micro');
+import { micro, json } from "./index.js";
 ```
 
 ### Usage

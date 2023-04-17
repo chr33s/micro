@@ -1,10 +1,9 @@
 /* eslint-env mocha */
 
-"use strict";
+import supertest from "supertest";
+import assert from "assert";
 
-const supertest = require("supertest");
-const assert = require("assert");
-const micro = require("./");
+import { micro, buffer, error, form, text, json } from "./index.js";
 
 describe("micro", function() {
   it("listen", () => {
@@ -15,7 +14,7 @@ describe("micro", function() {
   describe("error", function() {
     it("statusCode", () => {
       try {
-        micro.error({ statusCode: 404 });
+        error({ statusCode: 404 });
       } catch (e) {
         assert(e.statusMessage === "Not Found");
       }
@@ -24,7 +23,7 @@ describe("micro", function() {
     describe("statusMessage", function() {
       it("!expose", () => {
         try {
-          micro.error({ statusMessage: "test" });
+          error({ statusMessage: "test" });
         } catch (e) {
           assert(e.statusMessage !== "test");
         }
@@ -32,7 +31,7 @@ describe("micro", function() {
 
       it("expose", () => {
         try {
-          micro.error({ statusMessage: "test", expose: true });
+          error({ statusMessage: "test", expose: true });
         } catch (e) {
           assert(e.statusMessage === "test");
         }
@@ -41,7 +40,7 @@ describe("micro", function() {
 
     it("args", () => {
       try {
-        micro.error({ extra: "extra attribute" });
+        error({ extra: "extra attribute" });
       } catch (e) {
         assert(e.extra === "extra attribute");
       }
@@ -61,7 +60,7 @@ describe("micro", function() {
   describe("parse", function() {
     describe("buffer", function() {
       it("read", () => {
-        const app = micro(req => micro.buffer(req));
+        const app = micro(req => buffer(req));
 
         return supertest(app)
           .post("/")
@@ -73,8 +72,8 @@ describe("micro", function() {
 
       it("rereadable", () => {
         const app = micro(async req => {
-          const b1 = await micro.buffer(req);
-          const b2 = await micro.buffer(req);
+          const b1 = await buffer(req);
+          const b2 = await buffer(req);
 
           assert.deepEqual(b1, b2);
 
@@ -89,7 +88,7 @@ describe("micro", function() {
     });
 
     it("text", () => {
-      const app = micro(req => micro.text(req));
+      const app = micro(req => text(req));
 
       return supertest(app)
         .post("/")
@@ -100,7 +99,7 @@ describe("micro", function() {
     });
 
     it("json", () => {
-      const app = micro(req => micro.json(req));
+      const app = micro(req => json(req));
       const body = { a: "b" };
 
       return supertest(app)
@@ -112,7 +111,7 @@ describe("micro", function() {
     });
 
     it("form", () => {
-      const app = micro(req => micro.form(req));
+      const app = micro(req => form(req));
 
       return supertest(app)
         .post("/")
@@ -123,7 +122,7 @@ describe("micro", function() {
     });
 
     it("error", () => {
-      const app = micro(req => micro.json(req));
+      const app = micro(req => json(req));
       const body = '{ "a:b" }';
 
       return supertest(app)
