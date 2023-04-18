@@ -4,8 +4,7 @@
   "type": "module",
   "scripts": {
     "lint": "standardx --fix **/*.js",
-    "format": "prettier --write '**/*.js'",
-    "pretest": "npm run format && npm run lint",
+    "pretest": "npm run lint",
     "test": "NODE_ENV=test mocha test"
   },
   "author": "chris",
@@ -25,7 +24,6 @@
   },
   "devDependencies": {
     "mocha": "10.2.0",
-    "prettier": "2.8.7",
     "standardx": "7.0.0",
     "supertest": "6.3.3"
   }
