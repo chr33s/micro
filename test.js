@@ -59,7 +59,7 @@ describe("micro", function() {
 
   describe("parse", function() {
     describe("buffer", function() {
-      it("read", () => {
+      it("read", async () => {
         const app = micro(req => buffer(req));
 
         return supertest(app)
@@ -87,7 +87,7 @@ describe("micro", function() {
       });
     });
 
-    it("text", () => {
+    it("text", async () => {
       const app = micro(req => text(req));
 
       return supertest(app)
@@ -98,7 +98,7 @@ describe("micro", function() {
         .then(res => assert(res.text === "text"));
     });
 
-    it("json", () => {
+    it("json", async () => {
       const app = micro(req => json(req));
       const body = { a: "b" };
 
@@ -110,7 +110,7 @@ describe("micro", function() {
         .then(res => assert.deepEqual(res.body, body));
     });
 
-    it("form", () => {
+    it("form", async () => {
       const app = micro(req => form(req));
 
       return supertest(app)
@@ -147,7 +147,7 @@ describe("micro", function() {
         .expect("Content-Type", /html/);
     });
 
-    it("null", () => {
+    it("null", async () => {
       const app = micro(() => null);
 
       return supertest(app)
